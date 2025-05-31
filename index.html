@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src https://cdn.discordapp.com; connect-src 'self'">
+  <title>Line Software | Valorant Ürünleri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --dark-blue: #0d1b2a;
+      --mid-blue: #1b263b;
+      --light-blue: #415a77;
+      --accent-blue: #778da9;
+      --white: #e0e1dd;
+      --glow-color: rgba(119, 141, 169, 0.7);
+      --orange: #ff9800;
+      --gradient-btn: linear-gradient(90deg, #ff9800 0%, #ffb347 100%);
+      --footer-bg: linear-gradient(90deg, #1b263b 60%, #415a77 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', 'Orbitron', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--dark-blue) 80%, var(--light-blue) 100%);
+      background-attachment: fixed;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--mid-blue);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--glow-color), transparent);
+      animation: headerGlow 3s linear infinite;
+    }
+
+    @keyframes headerGlow {
+      100% {
+        left: 100%;
+      }
+    }
+
+    header h1 {
+      color: var(--accent-blue);
+      font-size: 2.5rem;
+      position: relative;
+      text-shadow: 0 0 10px var(--glow-color);
+      animation: textGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes textGlow {
+      from {
+        text-shadow: 0 0 5px var(--glow-color);
+      }
+      to {
+        text-shadow: 0 0 15px var(--glow-color), 0 0 20px var(--glow-color);
+      }
+    }
+
+    nav {
+      background-color: var(--light-blue);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+      padding: 5px 10px;
+      border-radius: 5px;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--accent-blue);
+      background-color: rgba(0,0,0,0.2);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-blue);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to right, #1b263b, #0d1b2a);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, transparent 0%, rgba(13,27,42,0.8) 70%);
+      pointer-events: none;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      position: relative;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+      position: relative;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    .btn {
+      background: var(--gradient-btn);
+      color: var(--dark-blue);
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(255,152,0,0.15);
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 25px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      animation: pulse 2s infinite 1s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn i {
+      font-size: 1.2em;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #ffb347 0%, #ff9800 100%);
+      color: var(--white);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, transparent 45%, rgba(255,255,255,0.3) 50%, transparent 55%);
+      transform: rotate(45deg);
+      animation: btnShine 3s infinite;
+    }
+
+    @keyframes btnShine {
+      0% {
+        left: -50%;
+        top: -50%;
+      }
+      100% {
+        left: 150%;
+        top: 150%;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(119, 141, 169, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(119, 141, 169, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(119, 141, 169, 0);
+      }
+    }
+
+    .products {
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      background-color: var(--mid-blue);
+      flex-grow: 1;
+    }
+
+    .product-card {
+      background-color: var(--light-blue);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 24px rgba(255,152,0,0.10), 0 1.5px 6px rgba(0,0,0,0.10);
+      transition: all 0.4s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+      border: 1.5px solid var(--accent-blue);
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.3s; }
+    .product-card:nth-child(3) { animation-delay: 0.5s; }
+    .product-card:nth-child(4) { animation-delay: 0.7s; }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .product-card:hover {
+      box-shadow: 0 12px 32px rgba(255,152,0,0.18), 0 3px 12px rgba(0,0,0,0.18);
+      border-color: var(--orange);
+      background: linear-gradient(120deg, var(--light-blue) 80%, var(--orange) 100%);
+    }
+
+    .product-card img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 15px;
+      transition: transform 0.3s;
+      filter: grayscale(20%);
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+      filter: grayscale(0%);
+    }
+
+    .product-card h3 {
+      color: var(--orange);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .product-card h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background-color: var(--orange);
+      transition: width 0.3s;
+    }
+
+    .product-card:hover h3::after {
+      width: 80px;
+    }
+
+    .product-card p {
+      font-size: 0.95rem;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      background: var(--footer-bg);
+      color: var(--white);
+      border-top: 2px solid var(--orange);
+      margin-top: 40px;
+      padding-bottom: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
+    }
+
+    .footer-social {
+      margin: 10px 0 15px 0;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+    }
+
+    .footer-social a {
+      color: var(--orange);
+      font-size: 1.5rem;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover {
+      color: var(--white);
+    }
+
+    .footer-info {
+      font-size: 0.95rem;
+      color: var(--accent-blue);
+      margin-bottom: 8px;
+    }
+
+    .copyright {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark-blue);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--light-blue);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-blue);
+    }
+
+    /* Mobile Animations */
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 1.5rem;
+        animation: fadeInDownMobile 1s ease-out;
+      }
+
+      @keyframes fadeInDownMobile {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero p {
+        font-size: 1rem;
+        animation: fadeInUpMobile 1s ease-out 0.3s both;
+      }
+
+      @keyframes fadeInUpMobile {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      nav {
+        gap: 10px;
+      }
+
+      .product-card {
+        animation: fadeInUpMobile 0.6s forwards;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+
+      .footer-social a {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Social Links Container */
+    .floating-socials-row {
+      position: fixed;
+      bottom: 24px;
+      right: 32px;
+      display: flex;
+      flex-direction: row;
+      gap: 14px;
+      z-index: 1000;
+    }
+
+    .floating-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #232946 60%, #778da9 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      opacity: 0.92;
+    }
+
+    .floating-btn.discord {
+      background: linear-gradient(135deg, #5865f2 60%, #232946 100%);
+      color: #fff;
+    }
+
+    .floating-btn.globe {
+      background: linear-gradient(135deg, #ff9800 60%, #232946 100%);
+      color: #fff;
+    }
+
+    .floating-btn:hover {
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+      opacity: 1;
+    }
+
+    .floating-btn:active {
+      transform: scale(0.97);
+    }
+
+    .protection-badge-new.left {
+      position: fixed;
+      bottom: 20px;
+      left: 32px;
+      right: auto;
+      background: linear-gradient(90deg, #232946 60%, #64ffda 100%);
+      color: #fff;
+      padding: 8px 22px 8px 16px;
+      border-radius: 24px;
+      font-size: 1rem;
+      font-family: 'Orbitron', 'Roboto', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+      z-index: 1000;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      opacity: 0.95;
+      border: 1.5px solid #64ffda;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .protection-badge-new.left i {
+      color: #64ffda;
+      font-size: 1.2em;
+      margin-right: 2px;
+    }
+
+    .protection-badge-new.left:hover {
+      background: linear-gradient(90deg, #64ffda 60%, #232946 100%);
+      color: #232946;
+    }
+
+    @media (max-width: 600px) {
+      .floating-socials-row {
+        right: 12px;
+        bottom: 10px;
+        gap: 10px;
+      }
+      .floating-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+      .protection-badge-new.left {
+        left: 10px;
+        bottom: 10px;
+        font-size: 0.85rem;
+        padding: 6px 14px 6px 10px;
+      }
+    }
+
+    footer {
+      padding: 18px 10px 12px 10px !important;
+      font-size: 0.85rem !important;
+      margin-top: 20px !important;
+    }
+    .footer-social {
+      margin: 6px 0 8px 0 !important;
+      gap: 10px !important;
+    }
+    .footer-info {
+      margin-bottom: 4px !important;
+      font-size: 0.9rem !important;
+    }
+    .copyright {
+      margin-bottom: 5px !important;
+      font-size: 0.85rem !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Line Software</h1>
+    <p>Valorant Ürünleri | Güvenilir Hizmet</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="products/hakkimizda.html">Hakkımızda</a>
+    <a href="products/iletisim.html">İletişim</a>
+  </nav>
+
+  <section class="hero">
+    <h2>En İyi Valorant Yazılımları Burada</h2>
+    <p>Line Software, Valorant dünyasında ihtiyaç duyduğunuz tüm ürünleri güvenle sunar. %100 müşteri memnuniyeti ile hizmet veriyoruz.</p>
+    <a class="btn" href="https://discord.gg/linesoftware" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Satın Al</a>
+  </section>
+
+  <section id="urunler" class="products">
+    <div class="product-card">
+      <h3>Valorant Unbranded</h3>
+      <p>Gelişmiş hedefleme sistemi, özel yapay zeka desteği ile %100 stabil. Ban korumalı.</p>
+      <img src="https://cdn.discordapp.com/attachments/placeholder1/aimbot.jpg" alt="Aimbot Görseli">
+    </div>
+    <div class="product-card">
+      <h3>unlockall</h3>
+      <p>Düşmanları duvar arkasından görerek avantaj kazanın. Günlük güncellemelerle tam uyumluluk.</p>
+      <img src="https://cdn.discordapp.com/attachments/placeholder2/esp.jpg" alt="ESP Wallhack Görseli">
+    </div>
+    <div class="product-card">
+      <h3>Color Bot</h3>
+      <p>Hızlı tepki süresi ile otomatik ateşleme özelliği. İdeal rekabet avantajı.</p>
+      <img src="https://cdn.discordapp.com/attachments/placeholder3/trigger.jpg" alt="Trigger Bot Görseli">
+    </div>
+    <div class="product-card">
+      <h3>Sp00fer</h3>
+      <p>Tüm yazılımların birleşimi. En yüksek koruma ve performans garantisi ile.</p>
+      <img src="https://cdn.discordapp.com/attachments/placeholder4/premium.jpg" alt="Premium Paket Görseli">
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-info">Güvenli alışveriş ve 7/24 destek için Line Software!</div>
+    <div class="footer-social">
+      <a href="https://discord.gg/linesoftware" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+      <a href="https://cheatglobal.com/" target="_blank" title="ChatGlobal"><i class="fa-solid fa-globe"></i></a>
+      <a href="mailto:info@linesoftware.com" target="_blank" title="Mail"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+    <div class="copyright">
+      © 2022 Line Software | Tüm hakları saklıdır.
+    </div>
+  </footer>
+
+  <!-- Sosyal Bağlantılar -->
+  <div class="floating-socials-row">
+    <a href="https://discord.gg/linesoftware" class="floating-btn discord" target="_blank" rel="noopener noreferrer" title="Discord">
+      <i class="fab fa-discord"></i>
+    </a>
+    <a href="https://cheatglobal.com/" class="floating-btn globe" target="_blank" rel="noopener noreferrer" title="ChatGlobal">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+  </div>
+
+  <div class="protection-badge-new left" title="DDoS Koruması Aktif">
+    <i class="fa-solid fa-shield-halved"></i> DDoS Koruması Aktif
+  </div>
+
+  <script>
+    // Scroll animations
+    const animateOnScroll = function() {
+      const elements = document.querySelectorAll('.product-card');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if(elementPosition < screenPosition) {
+          element.style.animation = `fadeInUp 0.6s forwards`;
+        }
+      });
+    };
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+
+    // Button ripple effect
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const x = e.clientX - e.target.getBoundingClientRect().left;
+        const y = e.clientY - e.target.getBoundingClientRect().top;
+        
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+          window.location.href = this.getAttribute('href');
+        }, 500);
+      });
+    });
+
+    // DDoS Protection simulation
+    let requestCount = 0;
+    const maxRequests = 30;
+    const timeWindow = 10000; // 10 seconds
+    
+    setInterval(() => {
+      requestCount = 0;
+    }, timeWindow);
+    
+    window.addEventListener('load', () => {
+      requestCount++;
+      if(requestCount > maxRequests) {
+        document.body.innerHTML = '<h1 style="color:red;text-align:center;margin-top:50px;">Too many requests. Please try again later.</h1>';
+        throw new Error('Rate limit exceeded');
+      }
+    });
+  </script>
+</body>
+</html>

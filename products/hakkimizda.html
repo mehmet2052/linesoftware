@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hakkımızda | Line Software</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --dark-blue: #0a192f;
+      --mid-blue: #112240;
+      --accent-blue: #64ffda;
+      --accent-purple: #7b68ee;
+      --white: #e6f1ff;
+      --light-gray: #8892b0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0a192f 0%, #09162c 100%);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    /* Hamburger Menü */
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(100, 255, 218, 0.7);
+      transition: all 0.3s ease;
+    }
+    
+    .menu-btn span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: var(--dark-blue);
+      margin: 2px 0;
+      transition: all 0.3s ease;
+    }
+    
+    .menu-btn.active span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    
+    .menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .menu-btn.active span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+    
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100vh;
+      background: rgba(10, 25, 47, 0.95);
+      z-index: 99;
+      padding-top: 80px;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mobile-nav.active {
+      left: 0;
+    }
+    
+    .mobile-nav a {
+      display: block;
+      padding: 15px 25px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-bottom: 1px solid rgba(136, 146, 176, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav a:hover {
+      background: rgba(100, 255, 218, 0.1);
+      color: var(--accent-blue);
+      padding-left: 30px;
+    }
+    
+    /* Header */
+    header {
+      text-align: center;
+      padding: 50px 20px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(100, 255, 218, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(100, 255, 218, 0.1) 0%, transparent 20%);
+      z-index: -1;
+    }
+    
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: fadeInDown 1s ease;
+      text-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
+      letter-spacing: 1px;
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      color: var(--light-gray);
+      animation: fadeIn 1.5s ease;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .hero h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      color: var(--accent-blue);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .hero h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--accent-purple);
+      border-radius: 2px;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--light-gray);
+      margin-top: 25px;
+      line-height: 1.8;
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 60px 20px;
+      background-color: var(--mid-blue);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .features::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 90% 10%, rgba(100, 255, 218, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 10% 90%, rgba(100, 255, 218, 0.05) 0%, transparent 30%);
+      z-index: 0;
+    }
+    
+    .features h3 {
+      text-align: center;
+      color: var(--accent-blue);
+      margin-bottom: 40px;
+      font-size: 2rem;
+      position: relative;
+      z-index: 1;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .features ul {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    
+    .features li {
+      list-style-type: none;
+      padding: 25px;
+      background: rgba(17, 34, 64, 0.8);
+      border-radius: 10px;
+      border-left: 4px solid var(--accent-purple);
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      transform: translateX(-100px);
+      opacity: 0;
+      animation: slideIn 0.6s forwards;
+      transition: all 0.3s ease;
+    }
+    
+    .features li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(123, 104, 238, 0.4);
+    }
+    
+    .features li:nth-child(1) { animation-delay: 0.2s; }
+    .features li:nth-child(2) { animation-delay: 0.4s; }
+    .features li:nth-child(3) { animation-delay: 0.6s; }
+    .features li:nth-child(4) { animation-delay: 0.8s; }
+    .features li:nth-child(5) { animation-delay: 1.0s; }
+    .features li:nth-child(6) { animation-delay: 1.2s; }
+    
+    .features li::before {
+      content: "✓";
+      color: var(--accent-blue);
+      font-weight: bold;
+      margin-right: 15px;
+      font-size: 1.5rem;
+    }
+    
+    /* Team Section - Profil Resimli Kısım */
+    .team {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(to bottom, var(--dark-blue) 0%, #081428 100%);
+    }
+    
+    .team h3 {
+      color: var(--accent-blue);
+      margin-bottom: 50px;
+      font-size: 2.2rem;
+      font-family: 'Orbitron', sans-serif;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .team h3::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 3px;
+      background: var(--accent-purple);
+    }
+    
+    .team-members {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    
+    .member {
+      width: 280px;
+      background: rgba(17, 34, 64, 0.8);
+      border-radius: 15px;
+      padding: 30px 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+      transform: translateY(50px);
+      opacity: 0;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .member::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+      transform: rotate(30deg);
+      z-index: 0;
+    }
+    
+    .member.animate {
+      animation: fadeInUp 0.8s forwards;
+    }
+    
+    .member:nth-child(1) { animation-delay: 0.2s; }
+    .member:nth-child(2) { animation-delay: 0.4s; }
+    .member:nth-child(3) { animation-delay: 0.6s; }
+    .member:nth-child(4) { animation-delay: 0.8s; }
+    
+    .member:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 15px 40px rgba(123, 104, 238, 0.5);
+      border-color: var(--accent-purple);
+    }
+    
+    .member-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .member-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 25px;
+      overflow: hidden;
+      border: 3px solid var(--accent-purple);
+      box-shadow: 0 0 25px rgba(123, 104, 238, 0.5);
+      position: relative;
+      background: linear-gradient(45deg, var(--mid-blue), var(--dark-blue));
+    }
+    
+    .member-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .member h4 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+    
+    .member p {
+      color: var(--light-gray);
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(100, 255, 218, 0.1);
+      color: var(--accent-blue);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--accent-purple);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+    
+    /* Values Section */
+    .values {
+      padding: 80px 20px;
+      background: var(--dark-blue);
+      position: relative;
+    }
+    
+    .values h3 {
+      text-align: center;
+      color: var(--accent-blue);
+      margin-bottom: 50px;
+      font-size: 2.2rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .values-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    
+    .value-card {
+      width: 320px;
+      background: rgba(17, 34, 64, 0.8);
+      border-radius: 15px;
+      padding: 35px 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .value-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(123, 104, 238, 0.1), transparent);
+      transform: rotate(30deg);
+      z-index: 0;
+    }
+    
+    .value-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent-purple);
+      box-shadow: 0 15px 35px rgba(123, 104, 238, 0.3);
+    }
+    
+    .value-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .value-icon {
+      font-size: 3rem;
+      color: var(--accent-purple);
+      margin-bottom: 25px;
+    }
+    
+    .value-card h4 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+    
+    .value-card p {
+      color: var(--light-gray);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(10, 25, 47, 0.9);
+      border-top: 1px solid rgba(100, 255, 218, 0.1);
+      position: relative;
+    }
+    
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+    }
+    
+    footer p {
+      color: var(--light-gray);
+      font-size: 1rem;
+    }
+    
+    /* Animasyonlar */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+    
+    @keyframes fadeInDown {
+      from { 
+        opacity: 0; 
+        transform: translateY(-30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+    
+    @keyframes slideIn {
+      from { 
+        opacity: 0; 
+        transform: translateX(-100px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateX(0); 
+      }
+    }
+    
+    /* Responsive Tasarım */
+    @media (max-width: 992px) {
+      .team-members, .values-container {
+        gap: 30px;
+      }
+      
+      .member, .value-card {
+        width: 280px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero {
+        padding: 40px 20px;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .features ul {
+        grid-template-columns: 1fr;
+      }
+      
+      .team, .values {
+        padding: 60px 20px;
+      }
+      
+      .member, .value-card {
+        width: 100%;
+        max-width: 350px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+      
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      
+      .features li {
+        padding: 20px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hamburger Menü -->
+  <div class="menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <!-- Mobil Navigasyon -->
+  <nav class="mobile-nav">
+    <a href="../index.html">Ana Sayfa</a>
+    <a href="hakkimizda.html">Hakkımızda</a>
+    <a href="iletisim.html">İletişim</a>
+  </nav>
+
+  <header>
+    <h1>Line Software</h1>
+    <p>Valorant Ürünleri | Güvenilir Hizmet</p>
+  </header>
+
+  <section class="hero">
+    <h2>Biz Kimiz?</h2>
+    <p>Line Software, profesyonel Valorant yazılım çözümleri sunan lider bir platformdur. Amacımız, oyun deneyiminizi geliştirmek ve güvenli hizmet sağlamaktır.</p>
+    <p>2018 yılından beri oyun severlere kaliteli yazılımlar sunuyoruz. Ekibimiz, oyun endüstrisinde uzmanlaşmış deneyimli geliştiriciler ve oyun tutkunlarından oluşmaktadır.</p>
+  </section>
+
+  <section class="features">
+    <h3>Neden Bizi Tercih Etmelisiniz?</h3>
+    <ul>
+      <li>%100 müşteri memnuniyeti garantisi</li>
+      <li>Güncel ve ban korumalı yazılımlar</li>
+      <li>7/24 Kurucu & Geliştirici hizmeti</li>
+      <li>Güvenli ödeme altyapısı</li>
+      <li>Sürekli güncellenen içerikler</li>
+      <li>Kullanıcı dostu arayüz ve kolay kurulum</li>
+    </ul>
+  </section>
+
+  <section class="team">
+    <h3>Ekibimiz</h3>
+    <div class="team-members">
+      <!-- Üye 1 -->
+      <div class="member">
+        <div class="member-content">
+          <div class="member-img">
+            <img src="https://i.imgur.com/ScnQy0N.png" alt="Ahmet Yılmaz">
+          </div>
+          <h4>the_kubilay</h4>
+          <p>Kurucu & Geliştirici</p>
+          <div class="social-links">
+            <a href="https://discord.gg/linesoftware"><i class="fab fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Üye 2 -->
+      <div class="member">
+        <div class="member-content">
+          <div class="member-img">
+            <img src="https://i.imgur.com/QoS7bvA.png" alt="Mehmet Kaya">
+          </div>
+          <h4>Kha'Zix</h4>
+          <p>Admin & Tasarımcı</p>
+          <div class="social-links">
+            <a href="https://discord.gg/linesoftware"><i class="fab fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Üye 3 -->
+      <div class="member">
+        <div class="member-content">
+          <div class="member-img">
+            <img src="https://i.imgur.com/grHiFgE.png" alt="Zeynep Demir">
+          </div>
+          <h4>Vgan</h4>
+          <p>Kurucu & Geliştirici</p>
+          <div class="social-links">
+            <a href="https://discord.gg/linesoftware"><i class="fab fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="values">
+    <h3>Değerlerimiz</h3>
+    <div class="values-container">
+      <div class="value-card">
+        <div class="value-content">
+          <div class="value-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4>Güvenlik</h4>
+          <p>Kullanıcı verilerinin güvenliği ve yazılımlarımızın ban riski taşımaması en önemli önceliğimizdir.</p>
+        </div>
+      </div>
+      <div class="value-card">
+        <div class="value-content">
+          <div class="value-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h4>Performans</h4>
+          <p>Yazılımlarımız minimum sistem kaynağı tüketerek maksimum performans sunar.</p>
+        </div>
+      </div>
+      <div class="value-card">
+        <div class="value-content">
+          <div class="value-icon">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          <h4>Sürekli Gelişim</h4>
+          <p>Oyun güncellemelerini yakından takip ederek yazılımlarımızı sürekli geliştiriyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2022 Line Software | Tüm hakları saklıdır.</p>
+  </footer>
+
+  <script>
+    // Hamburger menü toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const mobileNav = document.querySelector('.mobile-nav');
+    
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+    });
+    
+    // Animasyonları tetikleme
+    document.addEventListener('DOMContentLoaded', () => {
+      // Özellikler listesi animasyonu
+      const featureItems = document.querySelectorAll('.features li');
+      featureItems.forEach(item => {
+        item.style.opacity = 1;
+        item.style.transform = 'translateX(0)';
+      });
+      
+      // Ekibimiz animasyonu
+      const teamMembers = document.querySelectorAll('.member');
+      
+      // Scroll animasyonları
+      const animateOnScroll = () => {
+        teamMembers.forEach(member => {
+          const memberPosition = member.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+          
+          if(memberPosition < screenPosition) {
+            member.classList.add('animate');
+          }
+        });
+      };
+      
+      // Sayfa yüklendiğinde ve scroll olduğunda animasyonları tetikle
+      window.addEventListener('scroll', animateOnScroll);
+      animateOnScroll(); // İlk yüklemede kontrol et
+    });
+  </script>
+</body>
+</html>
